@@ -6,7 +6,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">FCC Pomodoro Project</header>
-        <div className="my-chart" />
+        <div class="pieholder">
+          <svg viewBox="0 0 64 64" class="pie">
+            <circle r="25%" cx="50%" cy="50%" />
+          </svg>
+        </div>
       </div>
     );
   }
