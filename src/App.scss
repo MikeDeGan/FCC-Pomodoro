@@ -13,15 +13,6 @@
   color: white;
 }
 
-.my-chart {
-  height: 20vh;
-  width: 20vw;
-  background-color: teal;
-  padding: 6em;
-  background-image: conic-gradient(gold 20%, red 0);
-  border-radius: 50%;
-}
-
 .pieholder {
   max-width: 80vw;
 }
@@ -42,6 +33,6 @@
   stroke: gold;
   stroke-width: 32;
   stroke-dasharray: 0 100.53088;
-  animation: runClock 120s linear infinite;
+  animation: runClock 90s linear infinite;
   fill: none;
 }
