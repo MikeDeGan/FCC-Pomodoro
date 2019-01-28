@@ -11,6 +11,14 @@ class App extends Component {
             <circle r="25%" cx="50%" cy="50%" />
           </svg>
         </div>
+        <span id="break-label">Break Length</span>
+        <button id="break-decrement" />
+        <span id="break-length" />
+        <button id="break-increment" />
+        <span id="session-label">Session Length</span>
+        <button id="session-decrement" />
+        <span id="session-length" />
+        <button id="session-increment" />
       </div>
     );
   }
