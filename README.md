@@ -1,3 +1,7 @@
+# Free Code Camp Pomodoro Project
+
+Another fun project from Free Code Camp. A pomodoro clock. This is built using React and Redux. Absolutely no reason to use Redux on this project other than it's a good excuse to get a little Redux practice time.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

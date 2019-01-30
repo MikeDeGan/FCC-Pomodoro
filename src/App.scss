@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightgrey;
+}
+
 .App {
   text-align: center;
 }
@@ -14,11 +24,11 @@
 }
 
 .pieholder {
-  max-width: 90vw;
+  max-width: 90px;
 }
 
 .pie {
-  background: red;
+  background: teal;
   border-radius: 50%;
   transform: rotate(-0.25turn);
 }
@@ -30,9 +40,9 @@
 }
 
 .pie circle {
-  stroke: gold;
+  stroke: orange;
   stroke-width: 32;
   stroke-dasharray: 0 100.53088;
-  animation: runClock 9s linear infinite;
+  animation: runClock 30s linear infinite;
   fill: none;
 }

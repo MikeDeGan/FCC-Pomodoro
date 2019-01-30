@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import './App.scss';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sessionLength: 20,
+      breakLength: 5,
+      timeRemaining: 20
+    };
+  }
+
   render() {
     return (
       <div className="App">
@@ -11,14 +20,26 @@ class App extends Component {
             <circle r="25%" cx="50%" cy="50%" />
           </svg>
         </div>
-        <span id="break-label">Break Length</span>
+        <div id="break-label">Break Length</div>
         <button id="break-decrement" />
-        <span id="break-length" />
+        <div id="break-length" />
         <button id="break-increment" />
-        <span id="session-label">Session Length</span>
+
+        <div id="session-label">Session Length</div>
         <button id="session-decrement" />
-        <span id="session-length" />
+        <div id="session-length" />
         <button id="session-increment" />
+        <div id="timer-label">Session</div>
+        <div id="time-left">mm:ss</div>
+        <div className="btn-group">
+          <button id="start-stop" class="btn-info">
+            Start
+          </button>
+          <button id="reset" class="btn-info">
+            Reset
+          </button>
+        </div>
+        <audio src="" id="beep" />
       </div>
     );
   }
