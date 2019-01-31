@@ -33,6 +33,18 @@ body {
   transform: rotate(-0.25turn);
 }
 
+.arrowholder {
+  max-width: 20px;
+}
+
+path {
+  fill: #4fba6f;
+}
+
+path:hover {
+  fill: #77bd8c;
+}
+
 @keyframes runClock {
   to {
     stroke-dasharray: 100.53088 100.53088;

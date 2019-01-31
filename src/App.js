@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
+import SVGDownArrow from './SVGDownArrow';
+import SVGUpArrow from './SVGUpArrow';
 
 class App extends Component {
   constructor(props) {
@@ -11,12 +13,16 @@ class App extends Component {
     };
   }
 
+  handleDownArrow() {
+    console.log('down arrow click');
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">FCC Pomodoro Project</header>
-        <div class="pieholder">
-          <svg viewBox="0 0 64 64" class="pie">
+        <div className="pieholder">
+          <svg viewBox="0 0 64 64" className="pie">
             <circle r="25%" cx="50%" cy="50%" />
           </svg>
         </div>
@@ -24,18 +30,20 @@ class App extends Component {
         <button id="break-decrement" />
         <div id="break-length" />
         <button id="break-increment" />
-
         <div id="session-label">Session Length</div>
-        <button id="session-decrement" />
+        <div className="arrowholder">
+          <SVGUpArrow id="session-increment" onClick={this.handleDownArrow} />
+          <SVGDownArrow id="session-decrement" onClick={this.handleDownArrow} />
+        </div>
         <div id="session-length" />
         <button id="session-increment" />
         <div id="timer-label">Session</div>
         <div id="time-left">mm:ss</div>
         <div className="btn-group">
-          <button id="start-stop" class="btn-info">
+          <button id="start-stop" className="btn-info">
             Start
           </button>
-          <button id="reset" class="btn-info">
+          <button id="reset" className="btn-info">
             Reset
           </button>
         </div>
