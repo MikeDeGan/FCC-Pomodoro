@@ -9,7 +9,7 @@ const SVGUpArrow = props => {
       <svg
         onClick={props.onClick}
         version="1.1"
-        id="Capa_1"
+        className="up-arrow"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         x="0px"
@@ -21,12 +21,11 @@ const SVGUpArrow = props => {
         <g>
           <g>
             <path
-              style={{ fill: '#4FBA6F' }}
               d="M53,27L53,27c0,14.359-11.641,26-26,26h0C12.641,53,1,41.359,1,27v0C1,12.641,12.641,1,27,1h0
 			C41.359,1,53,12.641,53,27z"
             />
             <path
-              style={{ fill: '#4FBA6F' }}
+              style={{ transition: 'all 3s' }}
               d="M27,54C12.112,54,0,41.888,0,27S12.112,0,27,0s27,12.112,27,27S41.888,54,27,54z M27,2
 			C13.215,2,2,13.215,2,27s11.215,25,25,25s25-11.215,25-25S40.785,2,27,2z"
             />

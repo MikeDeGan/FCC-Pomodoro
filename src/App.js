@@ -9,12 +9,19 @@ class App extends Component {
     this.state = {
       sessionLength: 20,
       breakLength: 5,
-      timeRemaining: 20
+      minRemaining: '20',
+      secRemaining: '00'
     };
+    this.handleDownArrow = this.handleDownArrow.bind(this);
   }
 
   handleDownArrow() {
-    console.log('down arrow click');
+    let secs = this.state.sessionLength;
+    secs = secs < 10 ? (secs = '0' + secs) : secs;
+    this.setState({
+      secRemaining: secs,
+      sessionLength: this.state.sessionLength - 1
+    });
   }
 
   render() {
@@ -25,6 +32,9 @@ class App extends Component {
           <svg viewBox="0 0 64 64" className="pie">
             <circle r="25%" cx="50%" cy="50%" />
           </svg>
+          <span id="countdown">
+            {this.state.minRemaining}:{this.state.secRemaining}
+          </span>
         </div>
         <div id="break-label">Break Length</div>
         <div className="arrowholder">
