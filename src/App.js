@@ -162,7 +162,7 @@ class App extends Component {
       startButton: 'Start'
     });
   }
-  render() {
+  render() { 
     return (
       <div className="App">
         <header className="App-header">FCC Pomodoro Project</header>
