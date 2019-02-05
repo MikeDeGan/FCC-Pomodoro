@@ -57,7 +57,6 @@ class App extends Component {
       minDisplay: sLength.toString(),
       secDisplay: '00',
       secRemaining: sLength * 60
-      // circleTime: sLength * 60
     });
   }
 
@@ -73,14 +72,13 @@ class App extends Component {
       minDisplay: sLength.toString(),
       secDisplay: '00',
       secRemaining: sLength * 60
-      // circleTime: sLength * 60
     });
   }
 
   switchTimerType() {
     let newTimerType;
     let newSecRemaining;
-    // let newMinDisplay;
+
     let newCircleTime;
     const { breakLength, sessionLength, timerType } = this.state;
     const elem = document.getElementById('beep');
@@ -93,12 +91,10 @@ class App extends Component {
     if (timerType === 'session') {
       newTimerType = 'break';
       newSecRemaining = breakLength * 60 + 1;
-      // newMinDisplay = '00';
       newCircleTime = 0;
     } else {
       newTimerType = 'session';
       newSecRemaining = sessionLength * 60 + 1;
-      // newMinDisplay = '00';
       newCircleTime = 0;
     }
 
