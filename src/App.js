@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Pie from './components/Pie';
+import Settings from './components/Settings';
+import Controls from './components/Controls';
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +17,9 @@ class App extends Component {
       timerState: 'paused',
       timerType: 'session',
       alarmState: 'paused',
-      startButton: 'Start'
+      startButton: 'Start',
+      playSound: true,
+      flash: true
     };
     this.handleIncreaseBreak = this.handleIncreaseBreak.bind(this);
     this.handleDecreaseBreak = this.handleDecreaseBreak.bind(this);
@@ -22,6 +27,17 @@ class App extends Component {
     this.handleDecreaseSession = this.handleDecreaseSession.bind(this);
     this.handleStart = this.handleStart.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handlePlaySound = this.handlePlaySound.bind(this);
+    this.handleFlash = this.handleFlash.bind(this);
+    this.pauseAnimation = this.pauseAnimation.bind(this);
+  }
+
+  handlePlaySound() {
+    this.setState({ playSound: !this.state.playSound });
+  }
+
+  handleFlash() {
+    this.setState({ flash: !this.state.flash });
   }
 
   handleIncreaseBreak() {
@@ -75,18 +91,57 @@ class App extends Component {
     });
   }
 
+  pauseAnimation(pie) {
+    this.setState({ alarmState: 'paused' });
+    setTimeout(() => {
+      pie.style = `box-shadow: 0px 0px 23px 23px rgb(2, 238, 238)`;
+    }, 100);
+    setTimeout(() => {
+      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2)`;
+    }, 200);
+    setTimeout(() => {
+      pie.style = `box-shadow: 0px 0px 23px 23px rgb(2, 238, 238)`;
+    }, 300);
+    setTimeout(() => {
+      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);`;
+    }, 400);
+    setTimeout(() => {
+      pie.style = `box-shadow: 0px 0px 23px 23px rgb(2, 238, 238)`;
+    }, 500);
+    setTimeout(() => {
+      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);`;
+    }, 600);
+    setTimeout(() => {
+      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
+    }, 700);
+    console.log(pie);
+  }
+
   switchTimerType() {
     let newTimerType;
     let newSecRemaining;
-
     let newCircleTime;
     const { breakLength, sessionLength, timerType } = this.state;
     const elem = document.getElementById('beep');
-    elem.play();
-    this.setState({ alarmState: 'running' });
-    setTimeout(() => {
-      this.setState({ alarmState: 'paused' });
-    }, 1000);
+    if (this.state.playSound) {
+      elem.play();
+    }
+    if (this.state.flash) {
+      this.setState({ alarmState: 'running' });
+      setTimeout(() => {
+        var e = document.getElementsByClassName('pie');
+
+        // Code for Chrome, Safari and Opera
+        e[0].addEventListener(
+          'webkitAnimationStart',
+          this.pauseAnimation(e[0])
+        );
+
+        // Standard syntax
+        e[0].addEventListener('animationstart', this.pauseAnimation(e[0]));
+        // this.setState({ alarmState: 'paused' });
+      }, 1000);
+    }
 
     if (timerType === 'session') {
       newTimerType = 'break';
@@ -159,85 +214,42 @@ class App extends Component {
       timerState: 'paused',
       timerType: 'session',
       alarmState: 'paused',
-      startButton: 'Start'
+      startButton: 'Start',
+      playSound: true,
+      flash: true
     });
   }
-  render() { 
+  render() {
     return (
       <div className="App">
         <header className="App-header">FCC Pomodoro Project</header>
         <div id="timer-label">{this.state.timerType}</div>
-        <div className="pieholder">
-          <svg
-            viewBox="0 0 64 64"
-            className="pie"
-            style={{
-              animation: 'flashShadow 0.1s linear infinite alternate',
-              animationPlayState: `${this.state.alarmState}`
-            }}
-          >
-            <circle
-              r="25%"
-              cx="50%"
-              cy="50%"
-              style={{
-                strokeDasharray: `${this.state.circleTime} 100.53088`
+        <Pie
+          alarmState={this.state.alarmState}
+          circleTime={this.state.circleTime}
+          minDisplay={this.state.minDisplay}
+          secDisplay={this.state.secDisplay}
+        />
 
-                // animation: `runClock ${this.state.circleTime}s linear infinite`,
-                // animationPlayState: this.state.timerState
-              }}
-            />
-          </svg>
-          <span id="time-left">
-            {this.state.minDisplay}:{this.state.secDisplay}
-          </span>
-        </div>
+        <Settings
+          handleIncreaseBreak={this.handleIncreaseBreak}
+          breakLength={this.state.breakLength}
+          handleDecreaseBreak={this.handleDecreaseBreak}
+          handleIncreaseSession={this.handleIncreaseSession}
+          sessionLength={this.state.sessionLength}
+          handleDecreaseSession={this.handleDecreaseSession}
+          playSound={this.state.playSound}
+          handlePlaySound={this.handlePlaySound}
+          flash={this.state.flash}
+          handleFlash={this.handleFlash}
+        />
 
-        <div id="adjustments">
-          <div id="break-label">Break Length</div>
-          <div className="arrowholder">
-            <i
-              className="fas fa-angle-up"
-              id="break-increment"
-              onClick={this.handleIncreaseBreak}
-            />
-            <div id="break-length">{this.state.breakLength}</div>
-            <i
-              className="fas fa-angle-down"
-              id="break-decrement"
-              onClick={this.handleDecreaseBreak}
-            />
-          </div>
+        <Controls
+          handleStart={this.handleStart}
+          startButton={this.state.startButton}
+          handleReset={this.handleReset}
+        />
 
-          <div id="session-label">Session Length</div>
-          <div className="arrowholder">
-            <i
-              className="fas fa-angle-up"
-              id="session-increment"
-              onClick={this.handleIncreaseSession}
-            />
-
-            <div id="session-length">{this.state.sessionLength}</div>
-            <i
-              className="fas fa-angle-down"
-              id="session-decrement"
-              onClick={this.handleDecreaseSession}
-            />
-          </div>
-        </div>
-
-        <div className="btn-group">
-          <button
-            id="start_stop"
-            className="btn-info"
-            onClick={this.handleStart}
-          >
-            {this.state.startButton}
-          </button>
-          <button id="reset" className="btn-info" onClick={this.handleReset}>
-            Reset
-          </button>
-        </div>
         <audio id="beep">
           <source
             src="./sounds/service-bell_daniel_simion.mp3"

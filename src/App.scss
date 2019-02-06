@@ -25,15 +25,15 @@ body {
 
 .pieholder {
   max-width: 390px;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
 }
 
 @keyframes flashShadow {
   50% {
-    box-shadow: 0px 0px 16px 16px rgb(2, 238, 238);
+    box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);
   }
   100% {
-    box-shadow: 0px 0px 13px 13px rgb(238, 155, 2);
+    box-shadow: 0px 0px 13px 13px rgb(2, 238, 238);
   }
 }
 
@@ -42,8 +42,7 @@ body {
   border-radius: 50%;
   transform: rotate(-0.25turn);
   box-shadow: 0px 0px 13px 13px rgb(2, 238, 238);
-  // animation: flashShadow 0.1s linear infinite alternate;
-  // animation-play-state: paused;
+  // animation-iteration-count: 6;
 }
 
 path {
@@ -54,18 +53,10 @@ path:hover {
   fill: teal;
 }
 
-// @keyframes runClock {
-//   to {
-//     // stroke-dasharray: 100.53088 100.53088;
-//     stroke-dasharray: 100 100;
-//   }
-// }
-
 .pie circle {
   stroke: orange;
   stroke-width: 32;
   stroke-dasharray: 100.53088 100;
-
   fill: none;
 }
 
@@ -77,36 +68,31 @@ path:hover {
 #time-left {
   position: relative;
   top: -240px;
-  // padding: 5vh 25vw;
-  // margin: -57px auto;
-
-  // color: white;
-  // background-color: rgba(0, 0, 0, 0.4);
-  // background-color: rgba(0, 128, 128, 0);
   background-color: teal;
   font-size: 4em;
   font-weight: bold;
   text-shadow: 3px 3px rgba(0, 0, 0, 0.4);
-
-  // box-shadow: 0px 0px 50px 50px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.4);
   border-radius: 50%;
   padding: 47px 10px;
-
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // width: 100px;
-  // margin-left: -50px; /* (width + padding)/2 */
-  // height: 50px;
-  // margin-top: -25px; /* (height + padding)/2 */
 }
 
-#adjustments {
-  width: 40vw;
-  margin: 10px auto;
+// #adjustments {
+//   width: 40vw;
+//   margin: 0px auto;
+// }
+
+button {
+  margin: 10px 10px;
 }
 
 .arrowholder {
-  max-width: 30px;
+  width: 400px;
+  margin: 5px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.arrowholder > * {
+  flex: 1 100%;
 }
