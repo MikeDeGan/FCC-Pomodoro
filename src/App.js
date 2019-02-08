@@ -8,18 +8,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sessionLength: 25,
-      breakLength: 5,
-      secRemaining: 1500,
+      sessionLength: 25, //25
+      breakLength: 5, //5
+      secRemaining: 1500, //1500
       circleTime: 0,
-      minDisplay: '25',
-      secDisplay: '00',
+      minDisplay: '25', //25
+      secDisplay: '00', //00
       timerState: 'paused',
       timerType: 'session',
       alarmState: 'paused',
-      startButton: 'Start',
-      playSound: true,
-      flash: true
+      startButton: 'start',
+      playSound: true, //true
+      flash: true //true
     };
     this.handleIncreaseBreak = this.handleIncreaseBreak.bind(this);
     this.handleDecreaseBreak = this.handleDecreaseBreak.bind(this);
@@ -30,6 +30,7 @@ class App extends Component {
     this.handlePlaySound = this.handlePlaySound.bind(this);
     this.handleFlash = this.handleFlash.bind(this);
     this.playAnimation = this.playAnimation.bind(this);
+    this.animateLabel = this.animateLabel.bind(this);
   }
 
   handlePlaySound() {
@@ -92,68 +93,22 @@ class App extends Component {
   }
 
   playAnimation(pie) {
-    // this.setState({ alarmState: 'paused' });
-    //  *****  CLEAN THIS MESS UP - ASAP  ************************
+    //
+    //
+    for (let i = 50; i <= 1000; i += 100) {
+      setTimeout(() => {
+        pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2)`;
+      }, i);
+      setTimeout(() => {
+        pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
+      }, i + 50);
+    }
+  }
+
+  animateLabel(timerLabel) {
     setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2)`;
-    }, 50);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 100);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2)`;
-    }, 150);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 200);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);`;
-    }, 250);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 300);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);`;
-    }, 350);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 400);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2)`;
-    }, 450);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
+      timerLabel.style.opacity = 1;
     }, 500);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2)`;
-    }, 550);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 600);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);`;
-    }, 650);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 700);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);`;
-    }, 750);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 800);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);`;
-    }, 850);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 900);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);`;
-    }, 950);
-    setTimeout(() => {
-      pie.style = `box-shadow: 0px 0px 13px 13px rgb(2, 238, 238)`;
-    }, 1000);
   }
 
   switchTimerType() {
@@ -166,22 +121,13 @@ class App extends Component {
       elem.play();
     }
     if (this.state.flash) {
-      var e = document.getElementsByClassName('pie');
+      let e = document.getElementsByClassName('pie');
       this.playAnimation(e[0]);
-      // this.setState({ alarmState: 'paused' }); // set to running to enable animation
-      // setTimeout(() => {
-
-      // Code for Chrome, Safari and Opera
-      // e[0].addEventListener(
-      //   'webkitAnimationStart',
-      //   this.pauseAnimation(e[0])
-      // );
-
-      // Standard syntax
-      // e[0].addEventListener('animationstart', this.pauseAnimation(e[0]));
-      // this.setState({ alarmState: 'paused' });
-      // }, 1000);
     }
+
+    let eTimerLabel = document.getElementById('timer-label');
+    eTimerLabel.style.opacity = 0;
+    this.animateLabel(eTimerLabel);
 
     if (timerType === 'session') {
       newTimerType = 'break';
@@ -199,6 +145,12 @@ class App extends Component {
       secDisplay: '00',
       circleTime: newCircleTime
     });
+
+    // setTimeout(() => {
+    //   this.setState({
+    //     timerType: newTimerType
+    //   });
+    // }, 500);
   }
 
   handleStart() {

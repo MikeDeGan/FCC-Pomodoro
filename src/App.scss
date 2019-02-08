@@ -23,6 +23,12 @@ body {
   font-size: calc(10px + 2vmin);
 }
 
+#timer-label {
+  font-size: 4em;
+  text-transform: uppercase;
+  transition: opacity 0.5s;
+}
+
 .pieholder {
   max-width: 390px;
   margin: 20px auto 0 auto;
@@ -58,11 +64,6 @@ path:hover {
   stroke-width: 32;
   stroke-dasharray: 100.53088 100;
   fill: none;
-}
-
-#timer-label {
-  font-size: 4em;
-  text-transform: uppercase;
 }
 
 #time-left {
