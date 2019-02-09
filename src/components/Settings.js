@@ -53,20 +53,20 @@ const Settings = props => {
       </div>
 
       <div id="alarm-settings">Alarm Settings</div>
-      <label htmlFor="play-sound">Play Sound</label>
       <input
         id="play-sound"
         type="checkbox"
         checked={props.playSound}
         onChange={props.handlePlaySound}
       />
-      <label htmlFor="flash">Flash on Alarm</label>
+      <label htmlFor="play-sound">Play Sound</label>
       <input
         id="flash"
         type="checkbox"
         checked={props.flash}
         onChange={props.handleFlash}
       />
+      <label htmlFor="flash">Flash on Alarm</label>
     </div>
   );
 };
