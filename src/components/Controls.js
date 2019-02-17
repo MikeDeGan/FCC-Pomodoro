@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 
 const Controls = props => {
   return (
-    <div className="btn-group container">
-      <div className="col-sm-4" />
-      <button
-        id="start_stop"
-        className="btn-info col-sm-2"
-        onClick={props.handleStart}
-      >
-        {props.startButton}
-      </button>
-      <button
-        id="reset"
-        className="btn-info col-sm-2"
-        onClick={props.handleReset}
-      >
-        Reset
-      </button>
-      <div className="col-sm-4" />
+    <div className="container button-holder">
+      <div className="row">
+        <div className="col-6">
+          <button
+            id="start_stop"
+            className="btn-info"
+            onClick={props.handleStart}
+          >
+            {props.startButton}
+          </button>
+        </div>
+        <div className="col-6">
+          <button id="reset" className="btn-info" onClick={props.handleReset}>
+            Reset
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

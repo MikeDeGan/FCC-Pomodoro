@@ -26,21 +26,12 @@ body {
 #timer-label {
   font-size: 4em;
   text-transform: uppercase;
-  transition: opacity 0.5s;
+  // transition: opacity 0.5s;    //uncomment this line to fade the timer title, uncomment code in App.js also
 }
 
 .pieholder {
   max-width: 390px;
-  margin: 20px auto 0 auto;
-}
-
-@keyframes flashShadow {
-  50% {
-    box-shadow: 0px 0px 16px 16px rgb(238, 155, 2);
-  }
-  100% {
-    box-shadow: 0px 0px 13px 13px rgb(2, 238, 238);
-  }
+  margin: 20px auto -50px auto;
 }
 
 .pie {
@@ -48,7 +39,6 @@ body {
   border-radius: 50%;
   transform: rotate(-0.25turn);
   box-shadow: 0px 0px 13px 13px rgb(2, 238, 238);
-  // animation-iteration-count: 6;
 }
 
 path {
@@ -78,22 +68,38 @@ path:hover {
   padding: 47px 10px;
 }
 
-// #adjustments {
-//   width: 40vw;
-//   margin: 0px auto;
-// }
+#adjustments {
+  width: 400px;
+  margin: 0px auto;
+  font-size: 1.3em;
+}
+
+.plusminus {
+  margin: auto 10px;
+}
+
+.options {
+  margin: 20px auto;
+  width: 400px;
+}
+
+#play-sound,
+#flash {
+  margin: auto 5px;
+}
+
+input {
+  width: 15px;
+  height: 15px;
+}
+
+.button-holder {
+  width: 300px;
+  font-size: 1.3em;
+}
 
 button {
-  margin: 10px 10px;
-}
-
-.arrowholder {
-  width: 400px;
-  margin: 5px auto;
-  display: flex;
-  justify-content: center;
-}
-
-.arrowholder > * {
-  flex: 1 100%;
+  margin: 10px;
+  width: 100px;
+  height: 40px;
 }

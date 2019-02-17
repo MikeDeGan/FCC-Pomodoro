@@ -5,68 +5,69 @@ const Settings = props => {
   return (
     <div id="adjustments">
       <div className="container">
-        <div className="col-sm-2" />
-        <span id="break-label" className="col-sm-3">
-          Break Length
-        </span>
-        <span className="col-sm-2" />
-        <span id="session-label" className="col-sm-3">
-          Session Length
-        </span>
-        <div className="col-sm-2" />
-      </div>
-
-      <div className="arrowholder">
-        {/* <div className="col-sm-2" /> */}
-
-        <i
-          className="fas fa-minus d-inline"
-          id="break-decrement"
-          onClick={props.handleDecreaseBreak}
-        />
-        <div id="break-length" className="d-inline">
-          {props.breakLength}
+        <div className="row">
+          <span id="break-label" className="col-6">
+            Break Length
+          </span>
+          <span id="session-label" className="col-6">
+            Session Length
+          </span>
         </div>
-        <i
-          className="fas fa-plus d-inline"
-          id="break-increment"
-          onClick={props.handleIncreaseBreak}
-        />
 
-        {/* <div className="col-sm-2" /> */}
+        <div className="row">
+          <div className="col-6">
+            <i
+              className="fas fa-minus d-inline plusminus"
+              id="break-decrement"
+              onClick={props.handleDecreaseBreak}
+            />
+            <div id="break-length" className="d-inline">
+              {props.breakLength}
+            </div>
+            <i
+              className="fas fa-plus d-inline plusminus"
+              id="break-increment"
+              onClick={props.handleIncreaseBreak}
+            />
+          </div>
+          <div className="col-6">
+            <i
+              className="fas fa-minus d-inline plusminus"
+              id="session-decrement"
+              onClick={props.handleDecreaseSession}
+            />
+            <div id="session-length" className="d-inline">
+              {props.sessionLength}
+            </div>
+            <i
+              className="fas fa-plus d-inline plusminus"
+              id="session-increment"
+              onClick={props.handleIncreaseSession}
+            />
+          </div>
 
-        <i
-          className="fas fa-minus d-inline"
-          id="session-decrement"
-          onClick={props.handleDecreaseSession}
-        />
-        <div id="session-length" className="d-inline">
-          {props.sessionLength}
+          <div className="row options">
+            <div className="col-6">
+              <input
+                id="play-sound"
+                type="checkbox"
+                checked={props.playSound}
+                onChange={props.handlePlaySound}
+              />
+              <label htmlFor="play-sound">Play Sound</label>
+            </div>
+            <div className="col-6">
+              <input
+                id="flash"
+                type="checkbox"
+                checked={props.flash}
+                onChange={props.handleFlash}
+              />
+              <label htmlFor="flash">Flash on Alarm</label>
+            </div>
+          </div>
         </div>
-        <i
-          className="fas fa-plus d-inline"
-          id="session-increment"
-          onClick={props.handleIncreaseSession}
-        />
-
-        {/* <div className="col-sm-2" /> */}
       </div>
-
-      <div id="alarm-settings">Alarm Settings</div>
-      <input
-        id="play-sound"
-        type="checkbox"
-        checked={props.playSound}
-        onChange={props.handlePlaySound}
-      />
-      <label htmlFor="play-sound">Play Sound</label>
-      <input
-        id="flash"
-        type="checkbox"
-        checked={props.flash}
-        onChange={props.handleFlash}
-      />
-      <label htmlFor="flash">Flash on Alarm</label>
     </div>
   );
 };

@@ -138,7 +138,8 @@ class App extends Component {
       newSecRemaining = sessionLength * 60 + 1;
       newCircleTime = 0;
     }
-
+    // move timertype to the setTimeout line below to fade smoothly
+    // have to keep it here to pass the freeCodeCamp tests
     this.setState({
       timerType: newTimerType,
       secRemaining: newSecRemaining,
@@ -146,6 +147,7 @@ class App extends Component {
       circleTime: newCircleTime
     });
 
+    //use this to fade the timer title smoothly
     // setTimeout(() => {
     //   this.setState({
     //     timerType: newTimerType
