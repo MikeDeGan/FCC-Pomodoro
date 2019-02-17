@@ -103,3 +103,28 @@ button {
   width: 100px;
   height: 40px;
 }
+
+@media screen and (max-width: 410px) {
+  #timer-label {
+    font-size: 2em;
+  }
+
+  .pieholder {
+    max-width: 250px;
+    margin: 20px auto -40px auto;
+  }
+  #time-left {
+    top: -150px;
+
+    font-size: 2em;
+
+    padding: 30px 10px;
+  }
+  #adjustments {
+    width: 300px;
+    font-size: 0.8em;
+  }
+  .button-holder {
+    font-size: 1em;
+  }
+}
