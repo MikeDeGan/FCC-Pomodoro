@@ -46,7 +46,7 @@ class App extends Component {
     if (bLength > 59 || this.state.timerState === 'running') {
       return;
     }
-    bLength = bLength < 10 ? (bLength = '0' + bLength) : bLength;
+
     this.setState({
       breakLength: this.state.breakLength + 1
     });
@@ -57,7 +57,7 @@ class App extends Component {
     if (bLength === 1 || this.state.timerState === 'running') {
       return;
     }
-    bLength = bLength < 10 ? (bLength = '0' + bLength) : bLength;
+
     this.setState({
       breakLength: this.state.breakLength - 1
     });
@@ -68,10 +68,11 @@ class App extends Component {
     if (sLength > 59 || this.state.timerState === 'running') {
       return;
     }
-    sLength = sLength < 9 ? (sLength = '0' + sLength + 1) : sLength + 1;
+    sLength++;
+
     this.setState({
       sessionLength: sLength,
-      minDisplay: sLength.toString(),
+      minDisplay: sLength < 10 ? '0' + sLength.toString() : sLength.toString(),
       secDisplay: '00',
       secRemaining: sLength * 60
     });
@@ -82,11 +83,11 @@ class App extends Component {
     if (sLength === 1 || this.state.timerState === 'running') {
       return;
     }
-    sLength =
-      sLength <= 10 ? (sLength = '0' + (sLength - 1).toString()) : sLength - 1;
+    sLength--;
+
     this.setState({
-      sessionLength: sLength * 1,
-      minDisplay: sLength.toString(),
+      sessionLength: sLength,
+      minDisplay: sLength < 10 ? '0' + sLength.toString() : sLength.toString(),
       secDisplay: '00',
       secRemaining: sLength * 60
     });
